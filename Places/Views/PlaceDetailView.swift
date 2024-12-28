@@ -1,34 +1,40 @@
+////
+////  PlaceDetailView.swift
+////  Places
+////
+////  Created by Artur Uvarov on 12/26/24.
+////
 //
-//  PlaceDetailView.swift
-//  Places
+//import SwiftUI
 //
-//  Created by Artur Uvarov on 12/26/24.
-//
-
-import SwiftUI
-
-struct PlaceDetailView: View {
-    let place: Place
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(place.title)
-                    .font(.title)
-                Text(place.subtitle)
-                Text("Location: \(place.lat), \(place.lng)")
-                Text("Votes: \(place.votes)")
-                
-                if !place.comments.isEmpty {
-                    Text("Comments")
-                        .font(.headline)
-                    ForEach(place.comments) { comment in
-                        CommentView(comment: comment)
-                    }
-                }
-            }
-            .padding()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
+//struct PlaceDetailView: View {
+//    let place: Place
+//    let controller: PlaceController
+//    @State private var newComment = ""
+//    @State private var commentAuthor = ""
+//    
+//    var body: some View {
+//        ScrollView {
+//            VStack(alignment: .leading, spacing: 16) {
+//                // ... existing place details ...
+//                
+//                Button(action: {
+//                    try? controller.upvotePlace(place)
+//                }) {
+//                    Label("Upvote", systemImage: "arrow.up")
+//                }
+//                
+//                VStack(alignment: .leading) {
+//                    TextField("Your name", text: $commentAuthor)
+//                    TextField("Add a comment", text: $newComment)
+//                    Button("Post Comment") {
+//                        guard !newComment.isEmpty, !commentAuthor.isEmpty else { return }
+//                        try? controller.addComment(to: place, text: newComment, author: commentAuthor)
+//                        newComment = ""
+//                    }
+//                }
+//            }
+//            .padding()
+//        }
+//    }
+//}

@@ -5,14 +5,16 @@
 //  Created by Artur Uvarov on 12/26/24.
 //
 
+
 import SwiftUI
 import SwiftData
 
 @main
-struct PlacesApp: App {
+struct SwiftUI_TodoApp_SwiftData_MVVMApp: App {
     var sharedModelContainer: ModelContainer = {
+        
         let schema = Schema([
-            Place.self,
+            Place.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,7 +24,7 @@ struct PlacesApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

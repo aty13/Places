@@ -22,20 +22,18 @@ final class Place {
     var imageUrl: String
     var votes: Int
     
-    // Note: For SwiftData relationships, we need to make Comment a @Model class too
-    @Relationship(deleteRule: .cascade) var comments: [Comment]
-    
-    init(id: String = UUID().uuidString,
-         timeStamp: Date = Date(),
+
+    init(
+        timeStamp: Date = Date(),
          author: String = "",
          name: String,
          description: String,
          lat: Double,
          lng: Double,
          imageUrl: String = "",
-         votes: Int = 0,
-         comments: [Comment] = []) {
-        self.id = id
+         votes: Int = 0
+    ) {
+        self.id = UUID().uuidString
         self.timeStamp = timeStamp
         self.author = author
         self.title = name
@@ -44,25 +42,11 @@ final class Place {
         self.lng = lng
         self.imageUrl = imageUrl
         self.votes = votes
-        self.comments = comments
     }
 }
 
-// Comment.swift
-@Model
-final class Comment {
-    var id: String
-    var text: String
-    var author: String
-    var timeStamp: Date
-    
-    init(id: String = UUID().uuidString,
-         text: String,
-         author: String,
-         timeStamp: Date = Date()) {
-        self.id = id
-        self.text = text
-        self.author = author
-        self.timeStamp = timeStamp
-    }
+enum Category {
+    case food
+    case sightseeing
+    case etc
 }
